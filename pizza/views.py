@@ -14,8 +14,8 @@ def index(request, pid):
         }
     except Pizza.DoesNotExist as e:
         data = {
-            "status": "Erro",
-            "erro": 'Pizza nao encontrada'
+            "status": "erro",
+            "message": 'pizza não encontrada'
         }
     return JsonResponse(data)
 
