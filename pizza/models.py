@@ -15,6 +15,13 @@ class Pizza(models.Model):
     thumbnail_url = models.URLField()
     approved = models.BooleanField(default=False)
     creator = models.ForeignKey(Pizzeria, on_delete=models.CASCADE)
+    TYPES = [
+        ('Contém carne', 'Contém carne'),
+        ('Vegetariana', 'Vegetariana'),
+        ('Vegana', 'Vegana'),
+    ]
+    types = models.CharField(
+        max_length=12, choices=TYPES, null=True, blank=True)
 
 
 class Likes(models.Model):
