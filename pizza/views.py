@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 
-from .models import Pizza
+from pizza.models import Pizza
 
 
 def index(request, pid):
@@ -20,6 +20,6 @@ def index(request, pid):
     return JsonResponse(data)
 
 def random(request):
-    pizzas = Pizza.objects.order_by("?")[:15].values()
+    pizzas = Pizza.objects.exclude(likes__user=request.user).order_by("?")[:15].values()
     
     return JsonResponse(list(pizzas), safe=False)
